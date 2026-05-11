@@ -3,126 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Castro Elétrons - Gestão PRO</title>
+    <title>Castro Elétrons - Oficial</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Inter',sans-serif;background:#070E1A;color:#E2EAF4;min-height:100vh}
         :root{--bg:#070E1A;--surface:#0D1B2E;--primary:#00E5A0;--accent:#F59E0B;--danger:#EF4444;--muted:#5A7A9A;--border:rgba(0,229,160,0.15);--radius:12px}
         
-        /* Telas */
         #login-screen{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:20px}
-        .login-box{width:100%;max-width:360px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 28px; text-align:center}
+        .login-box{width:100%;max-width:360px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 28px}
+        .login-logo{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px}
+        .bolt-icon{width:56px;height:56px;background:rgba(0,229,160,0.1);border:2px solid var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px}
+        .login-logo h1{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:3px}
+        
         #app{display:none;flex-direction:column;min-height:100vh}
-        
         .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:11px 15px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-        .screen{display:none;padding:14px; padding-bottom:100px}
-        .screen.active{display:block}
+        .topbar-brand{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;color:var(--primary)}
         
-        /* Componentes */
-        .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px}
-        .sinput{width:100%; padding:12px; background:#070E1A; border:1px solid var(--border); color:#fff; border-radius:8px; margin-bottom:10px; outline:none}
-        .sinput:focus{border-color:var(--primary)}
-        
-        .btn{padding:12px; border-radius:var(--radius); font-size:12px; font-weight:600; cursor:pointer; border:none; display:flex; align-items:center; justify-content:center; gap:5px; transition: 0.2s}
-        .btn-green{background:var(--primary); color:#000}
-        .btn-outline{background:none; border:1px solid var(--border); color:#E2EAF4}
-        .btn-danger{background:rgba(239, 68, 68, 0.1); border:1px solid var(--danger); color:var(--danger)}
-        
-        .price-box{background:linear-gradient(135deg,rgba(0,229,160,0.1),transparent); border:1px solid var(--primary); border-radius:var(--radius); padding:15px; margin:10px 0; display:none}
-        .price-box.show{display:block}
-        
-        .item-row{display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05)}
-        .low-stock{color: var(--danger); font-weight: bold; animation: pulse 2s infinite}
-        @keyframes pulse { 0% {opacity: 1} 50% {opacity: 0.5} 100% {opacity: 1} }
-
-        .bottom-nav{position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--border); display:flex; z-index:50; padding:5px 0}
-        .nav-btn{flex:1; display:flex; flex-direction:column; align-items:center; background:none; border:none; color:var(--muted); font-size:10px; cursor:pointer}
+        .main-content{flex:1;padding-bottom:76px}
+        .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:flex;z-index:50}
+        .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;padding:9px 4px 11px;cursor:pointer;color:var(--muted);font-size:9px;gap:3px;background:none;border:none}
         .nav-btn.active{color:var(--primary)}
         
-        .toast{position:fixed; top:20px; left:50%; transform:translateX(-50%); padding:12px 20px; border-radius:8px; z-index:1000; display:none}
+        .screen{display:none;padding:14px}
+        .screen.active{display:block}
+        .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px}
+        .field{margin-bottom:14px}
+        .field label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}
+        .field input{width:100%;padding:11px 13px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:#E2EAF4;font-size:14px;outline:none}
+        
+        .btn{padding:11px 14px;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:5px;width:100%}
+        .btn-green{background:var(--primary);color:#000}
+        .btn-outline{background:none;border:1px solid var(--border);color:var(--primary)}
+        .btn-danger{background:rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); color: var(--danger); margin-top: 10px}
+        
+        .item-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .stock-low{color: var(--danger) !important; font-weight: bold; animation: pulse 2s infinite}
+        @keyframes pulse { 0% {opacity:1} 50% {opacity:0.5} 100% {opacity:1} }
+
+        .price-box{background:linear-gradient(135deg,rgba(0,229,160,0.1),transparent);border:1px solid var(--primary);border-radius:var(--radius);padding:14px;margin:10px 0;display:none}
+        .price-box.show{display:block}
+        .price-val{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--primary)}
+        
+        .toast{position:fixed;top:65px;left:50%;transform:translateX(-50%);padding:9px 18px;border-radius:8px;font-size:12px;z-index:999;opacity:0;transition:0.3s; pointer-events:none}
+        .toast.show{opacity:1}
+        .toast.ok{background:var(--primary);color:#000}
+        .toast.err{background:var(--danger);color:#fff}
     </style>
 </head>
 <body>
 
 <div id="login-screen">
     <div class="login-box">
-        <h1>⚡ CASTRO ELÉTRONS</h1>
-        <input type="text" id="lu" placeholder="Usuário" class="sinput" style="margin-top:20px">
-        <input type="password" id="ls" placeholder="Senha" class="sinput">
-        <button class="btn btn-green" style="width:100%" onclick="login()">ACESSAR PAINEL</button>
+        <div class="login-logo"><div class="bolt-icon">⚡</div><h1>CASTRO ELÉTRONS</h1></div>
+        <div class="field"><label>USUÁRIO</label><input type="text" id="lu" placeholder="Gabriel27"></div>
+        <div class="field"><label>SENHA</label><input type="password" id="ls" placeholder="********"></div>
+        <button class="btn btn-green" onclick="login()">ENTRAR NO SISTEMA</button>
     </div>
 </div>
 
 <div id="app">
     <div class="topbar">
-        <div style="font-family:'Rajdhani'; font-weight:700; color:var(--primary)">⚡ CASTRO ELÉTRONS</div>
-        <button onclick="sair()" style="background:none; border:1px solid var(--border); color:var(--muted); padding:5px 10px; border-radius:6px; font-size:10px">SAIR</button>
+        <div class="topbar-brand">⚡ CASTRO ELÉTRONS</div>
+        <button onclick="sair()" style="background:none; border:1px solid var(--border); color:var(--muted); padding:5px 10px; border-radius:8px; font-size:11px;">SAIR</button>
     </div>
 
     <div class="main-content">
         <div class="screen active" id="sc-venda">
-            <div style="display:flex; gap:8px; margin-bottom:15px">
-                <button class="btn btn-green" id="tab-calc" onclick="aba('calc')" style="flex:1">CALCULADORA</button>
+            <div style="display:flex;gap:8px;margin-bottom:14px">
+                <button class="btn btn-green" id="tab-calc" onclick="aba('calc')" style="flex:1">CADASTRAR</button>
                 <button class="btn btn-outline" id="tab-cart" onclick="aba('cart')" style="flex:1">CARRINHO <span id="badge"></span></button>
             </div>
 
             <div id="p-calc">
                 <div class="card">
-                    <label style="font-size:11px; color:var(--muted)">PRODUTO</label>
-                    <input type="text" id="c-nome" class="sinput" placeholder="Ex: Smartwatch D20">
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px">
-                        <input type="number" id="c-custo" placeholder="Custo R$" class="sinput" oninput="calc()">
-                        <input type="number" id="c-qtd" placeholder="Qtd Inicial" class="sinput">
+                    <div class="field"><label>NOME DO PRODUTO</label><input type="text" id="c-nome" placeholder="Ex: Smartwatch D20"></div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <div class="field"><label>Custo R$</label><input type="number" id="c-custo" oninput="calc()"></div>
+                        <div class="field"><label>Estoque Inicial</label><input type="number" id="c-qtd-ini" value="0"></div>
                     </div>
-                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px">
-                        <input type="number" id="c-frete" placeholder="Frete" class="sinput" oninput="calc()">
-                        <input type="number" id="c-taxa" placeholder="Taxa %" class="sinput" oninput="calc()">
-                        <input type="number" id="c-lucro" placeholder="Lucro %" class="sinput" oninput="calc()">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
+                        <div class="field"><label>Frete</label><input type="number" id="c-frete" oninput="calc()"></div>
+                        <div class="field"><label>Taxa %</label><input type="number" id="c-taxa" oninput="calc()"></div>
+                        <div class="field"><label>Lucro %</label><input type="number" id="c-lucro" oninput="calc()"></div>
                     </div>
                 </div>
                 <div class="price-box" id="price-box">
-                    <div style="font-size:10px; color:var(--muted)">SUGESTÃO DE VENDA</div>
-                    <div id="price-val" style="font-size:24px; font-weight:bold; color:var(--primary)">R$ 0,00</div>
+                    <div style="font-size:11px;color:var(--muted)">PREÇO DE VENDA</div>
+                    <div class="price-val" id="price-val">R$ 0,00</div>
                 </div>
-                <button class="btn btn-green" id="btn-salvar" onclick="salvar()" disabled style="width:100%; margin-bottom:20px">CADASTRAR NO ESTOQUE</button>
-                
-                <div style="font-weight:bold; font-size:12px; margin-bottom:10px">CATÁLOGO DISPONÍVEL</div>
+                <button class="btn btn-green" id="btn-salvar" onclick="salvar()" disabled style="margin-bottom:20px">SALVAR NO ESTOQUE</button>
                 <div id="lista-cat"></div>
             </div>
 
             <div id="p-cart" style="display:none">
-                <input type="text" id="c-cliente" placeholder="Nome do Cliente" class="sinput">
-                <input type="tel" id="c-wpp" placeholder="WhatsApp (919...)" class="sinput">
+                <div class="card">
+                    <div class="field"><label>CLIENTE</label><input type="text" id="c-cliente" placeholder="Nome"></div>
+                    <div class="field"><label>WHATSAPP</label><input type="tel" id="c-wpp" placeholder="91988887777"></div>
+                </div>
                 <div id="cart-lista"></div>
-                <div id="total-bar" class="card" style="margin-top:15px; border-color:var(--primary); display:none">
-                    <div style="display:flex; justify-content:space-between"><span>TOTAL:</span><span id="t-total" style="font-weight:bold; color:var(--primary)">R$ 0,00</span></div>
-                    <button class="btn btn-green" style="width:100%; margin-top:10px" onclick="finalizar()">FINALIZAR VENDA</button>
+                <div id="total-bar" class="card" style="margin-top:10px; border-color:var(--primary); display:none">
+                    <div style="display:flex; justify-content:space-between; font-weight:bold"><span>TOTAL</span><span id="t-total">R$ 0,00</span></div>
+                    <button class="btn btn-green" onclick="finalizar()" style="margin-top:15px">FINALIZAR E ENVIAR</button>
                 </div>
             </div>
         </div>
 
         <div class="screen" id="sc-estoque">
-            <h3 style="margin-bottom:15px">📦 Controle de Estoque</h3>
+            <h3 style="margin-bottom:15px; font-family:'Rajdhani'">📦 MEU ESTOQUE</h3>
             <div id="lista-est"></div>
         </div>
 
         <div class="screen" id="sc-pedidos">
-            <h3 style="margin-bottom:15px">📑 Pedidos Realizados</h3>
+            <h3 style="margin-bottom:15px; font-family:'Rajdhani'">📑 PEDIDOS RECENTES</h3>
             <div id="lista-ped"></div>
         </div>
 
         <div class="screen" id="sc-rel">
-            <h3 style="margin-bottom:15px">📊 Performance de Vendas</h3>
+            <h3 style="margin-bottom:15px; font-family:'Rajdhani'">📊 PERFORMANCE</h3>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:20px">
-                <button class="btn btn-outline" onclick="gerarRelatorio('mes')">ESTE MÊS</button>
-                <button class="btn btn-outline" onclick="gerarRelatorio('semestre')">SEMESTRE</button>
+                <button class="btn btn-outline" onclick="gerarRelatorio(30)">MENSAL</button>
+                <button class="btn btn-outline" onclick="gerarRelatorio(180)">SEMESTRAL</button>
             </div>
-            <div id="rel-stats" class="card" style="display:none">
-                <div id="rel-titulo" style="font-weight:bold; color:var(--primary); margin-bottom:10px"></div>
-                <div style="display:flex; justify-content:space-between"><span>Vendas:</span><span id="r-total"></span></div>
-                <div style="display:flex; justify-content:space-between"><span>Qtd Pedidos:</span><span id="r-qtd"></span></div>
-            </div>
+            <div id="rel-resultado"></div>
         </div>
     </div>
 
@@ -130,22 +133,23 @@
         <button class="nav-btn active" id="nav-venda" onclick="nav('venda')"><span>💰</span>Venda</button>
         <button class="nav-btn" id="nav-estoque" onclick="nav('estoque')"><span>📦</span>Estoque</button>
         <button class="nav-btn" id="nav-pedidos" onclick="nav('pedidos')"><span>📑</span>Pedidos</button>
-        <button class="nav-btn" id="nav-rel" onclick="nav('rel')"><span>📊</span>Relatórios</button>
+        <button class="nav-btn" id="nav-rel" onclick="nav('rel')"><span>📊</span>Relatório</button>
     </nav>
 </div>
+
+<div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const sb = supabase.createClient('https://unhjleupkfimqqngazpa.supabase.co', 'sb_publishable_1PCUdcINjEA0NVksJez-QA_ZkbdY_8W');
 let cat = [], cart = [], precoSugerido = 0;
 
-// --- LOGIN & START ---
 async function login() {
     const u = document.getElementById('lu').value;
     const s = document.getElementById('ls').value;
-    const { data, error } = await sb.from('usuarios').select().eq('usuario', u).eq('senha', s).single();
+    const { data } = await sb.from('usuarios').select().eq('usuario', u).eq('senha', s).single();
     if(data) { document.getElementById('login-screen').style.display='none'; document.getElementById('app').style.display='flex'; loadCat(); }
-    else alert("Erro no login!");
+    else toast('Acesso negado!', 'err');
 }
 
 function nav(t) {
@@ -160,10 +164,10 @@ function nav(t) {
 function aba(t) {
     document.getElementById('p-calc').style.display = t==='calc' ? 'block' : 'none';
     document.getElementById('p-cart').style.display = t==='cart' ? 'block' : 'none';
-    renderCart();
+    if(t==='cart') renderCart();
 }
 
-// --- LOGICA DE PRODUTOS ---
+// --- LOGICA DE PRODUTOS & ESTOQUE ---
 function calc() {
     const custo = parseFloat(document.getElementById('c-custo').value) || 0;
     const frete = parseFloat(document.getElementById('c-frete').value) || 0;
@@ -180,12 +184,11 @@ function calc() {
 
 async function salvar() {
     const nome = document.getElementById('c-nome').value.toUpperCase();
-    const qtd = parseInt(document.getElementById('c-qtd').value) || 0;
+    const qtd = parseInt(document.getElementById('c-qtd-ini').value) || 0;
     const { error } = await sb.from('produtos').insert({
-        nome, preco_venda: precoSugerido, quantidade: qtd, 
-        custo: parseFloat(document.getElementById('c-custo').value), frete: parseFloat(document.getElementById('c-frete').value)
+        nome, preco_venda: precoSugerido, quantidade: qtd
     });
-    if(!error) { alert("Produto Salvo!"); loadCat(); }
+    if(!error) { toast('Salvo no estoque!', 'ok'); loadCat(); }
 }
 
 async function loadCat() {
@@ -193,23 +196,19 @@ async function loadCat() {
     cat = data || [];
     document.getElementById('lista-cat').innerHTML = cat.map(p => `
         <div class="item-row">
-            <span>${p.nome} (${p.quantidade} un)</span>
-            <button class="btn btn-green" onclick="addCart('${p.id}')" style="padding:5px 10px">+</button>
+            <span>${p.nome}</span>
+            <button class="btn btn-green" onclick="addCart('${p.id}')" style="width:40px; height:30px">+</button>
         </div>
     `).join('');
 }
 
-// --- ESTOQUE ---
 async function loadEst() {
     const { data } = await sb.from('produtos').select().order('quantidade');
     document.getElementById('lista-est').innerHTML = data.map(p => `
         <div class="card" style="display:flex; justify-content:space-between; align-items:center">
-            <div>
-                <div style="font-weight:bold">${p.nome}</div>
-                <div style="font-size:12px; color:var(--muted)">Preço: ${f(p.preco_venda)}</div>
-            </div>
-            <div class="${p.quantidade < 3 ? 'low-stock' : ''}" style="font-size:18px">
-                ${p.quantidade} <small style="font-size:10px">un</small>
+            <div><strong>${p.nome}</strong><br><small>${f(p.preco_venda)}</small></div>
+            <div class="${p.quantidade < 3 ? 'stock-low' : ''}" style="text-align:right">
+                ${p.quantidade} <small>un</small>
             </div>
         </div>
     `).join('');
@@ -218,9 +217,10 @@ async function loadEst() {
 // --- CARRINHO & PEDIDOS ---
 function addCart(id) {
     const p = cat.find(x => x.id === id);
-    if(p.quantidade <= 0) return alert("Estoque esgotado!");
+    if(p.quantidade <= 0) return toast('Sem estoque!', 'err');
     cart.push(p);
     document.getElementById('badge').textContent = `(${cart.length})`;
+    toast('Adicionado!', 'ok');
 }
 
 function renderCart() {
@@ -233,17 +233,24 @@ function renderCart() {
 
 async function finalizar() {
     const cliente = document.getElementById('c-cliente').value;
-    const wpp = document.getElementById('c-wpp').value;
+    const numRaw = document.getElementById('c-wpp').value.replace(/\D/g,'');
     const total = cart.reduce((s, i) => s + i.preco_venda, 0);
     
-    const { data, error } = await sb.from('pedidos').insert({ cliente_nome: cliente, cliente_wpp: wpp, total_venda: total }).select().single();
-    
+    // Inserir Pedido
+    const { data, error } = await sb.from('pedidos').insert({
+        cliente_nome: cliente, total_venda: total, status: 'ok'
+    }).select().single();
+
     if(!error) {
-        // Baixar estoque
+        // Baixa no estoque
         for(let item of cart) {
             await sb.from('produtos').update({ quantidade: item.quantidade - 1 }).eq('id', item.id);
         }
-        alert("Pedido Finalizado!");
+
+        // WhatsApp com +55 automático
+        const msg = `🚀 *CASTRO ELÉTRONS* 🚀\n\nOlá ${cliente}, seu pedido foi confirmado!\n\n*ITENS:*\n${cart.map(i => '- '+i.nome).join('\n')}\n\n*TOTAL: ${f(total)}*\n\nObrigado pela preferência! ⚡`;
+        window.open(`https://wa.me/55${numRaw}?text=${encodeURIComponent(msg)}`);
+        
         cart = []; document.getElementById('badge').textContent = '';
         aba('calc');
     }
@@ -257,36 +264,43 @@ async function loadPeds() {
                 <strong>${p.cliente_nome}</strong>
                 <span style="color:var(--primary)">${f(p.total_venda)}</span>
             </div>
-            <div style="font-size:10px; color:var(--muted); margin: 5px 0">${new Date(p.criado_em).toLocaleDateString()}</div>
-            <button class="btn btn-danger" style="width:100%; padding:5px; font-size:10px" onclick="cancelarPedido('${p.id}')">CANCELAR / APAGAR</button>
+            <div style="font-size:10px; color:var(--muted); margin-top:5px">${new Date(p.criado_em).toLocaleDateString('pt-BR')}</div>
+            <button class="btn btn-danger" onclick="apagarPedido('${p.id}')">APAGAR PEDIDO</button>
         </div>
     `).join('');
 }
 
-async function cancelarPedido(id) {
-    if(confirm("Deseja realmente apagar este pedido? Isso não devolverá os itens ao estoque automaticamente.")) {
+async function apagarPedido(id) {
+    if(confirm('Deseja cancelar este pedido?')) {
         await sb.from('pedidos').delete().eq('id', id);
         loadPeds();
+        toast('Pedido removido', 'ok');
     }
 }
 
 // --- RELATÓRIOS ---
-async function gerarRelatorio(tipo) {
-    const agora = new Date();
-    let dataInicio;
-    if(tipo === 'mes') dataInicio = new Date(agora.getFullYear(), agora.getMonth(), 1);
-    else dataInicio = new Date(agora.getFullYear(), agora.getMonth() - 6, 1);
-
-    const { data } = await sb.from('pedidos').select().gte('criado_em', dataInicio.toISOString());
+async function gerarRelatorio(dias) {
+    const dataLimite = new Date();
+    dataLimite.setDate(dataLimite.getDate() - dias);
+    
+    const { data } = await sb.from('pedidos').select().gte('criado_em', dataLimite.toISOString());
     
     const total = data.reduce((s, p) => s + p.total_venda, 0);
-    document.getElementById('rel-stats').style.display = 'block';
-    document.getElementById('rel-titulo').textContent = tipo === 'mes' ? 'RELATÓRIO MENSAL' : 'RELATÓRIO SEMESTRAL';
-    document.getElementById('r-total').textContent = f(total);
-    document.getElementById('r-qtd').textContent = data.length;
+    document.getElementById('rel-resultado').innerHTML = `
+        <div class="card" style="border-color:var(--primary)">
+            <div style="font-size:11px; color:var(--muted)">FATURAMENTO NO PERÍODO</div>
+            <div style="font-size:24px; font-weight:bold; color:var(--primary)">${f(total)}</div>
+            <div style="margin-top:10px; font-size:12px">${data.length} pedidos realizados</div>
+        </div>
+    `;
 }
 
 function f(v) { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v); }
+function toast(m, t) {
+    const el = document.getElementById('toast');
+    el.textContent = m; el.className = `toast ${t} show`;
+    setTimeout(() => el.classList.remove('show'), 3000);
+}
 function sair() { location.reload(); }
 </script>
 </body>
