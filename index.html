@@ -1,40 +1,427 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Castro Elétrons</title><link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#070E1A;color:#E2EAF4;min-height:100vh}:root{--bg:#070E1A;--surface:#0D1B2E;--primary:#00E5A0;--accent:#F59E0B;--danger:#EF4444;--muted:#5A7A9A;--border:rgba(0,229,160,0.15);--radius:12px}#login-screen{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:20px}.login-box{width:100%;max-width:360px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 28px}.login-logo{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px}.bolt-icon{width:56px;height:56px;background:rgba(0,229,160,0.1);border:2px solid var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px}.login-logo h1{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:3px}.login-logo p{color:var(--muted);font-size:12px}.field{margin-bottom:14px}.field label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}.field input{width:100%;padding:11px 13px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:#E2EAF4;font-size:14px;outline:none}.field input:focus{border-color:var(--primary)}.btn-login{width:100%;padding:13px;background:var(--primary);color:#000;border:none;border-radius:var(--radius);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px}.btn-login:disabled{opacity:0.5}#login-erro{color:var(--danger);font-size:12px;text-align:center;margin-top:10px;display:none}#app{display:none;flex-direction:column;min-height:100vh}.topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:11px 15px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}.topbar-brand{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;color:var(--primary)}.btn-sair{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 11px;border-radius:8px;font-size:11px;cursor:pointer}.main-content{flex:1;padding-bottom:76px}.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:flex;z-index:50}.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;padding:9px 4px 11px;cursor:pointer;color:var(--muted);font-size:9px;gap:3px;background:none;border:none;font-family:'Inter',sans-serif}.nav-btn span{font-size:20px}.nav-btn.active{color:var(--primary)}.screen{display:none;padding:14px}.screen.active{display:block}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px}.card-lbl{font-size:10px;font-weight:600;letter-spacing:1px;color:var(--muted);margin-bottom:10px;text-transform:uppercase}.ig{margin-bottom:10px}.ig label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.ig input{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:9px;color:#E2EAF4;font-size:13px;outline:none}.ig input:focus{border-color:var(--primary)}.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.price-box{background:linear-gradient(135deg,rgba(0,229,160,0.1),transparent);border:1px solid var(--primary);border-radius:var(--radius);padding:14px;margin:10px 0;display:none}.price-box.show{display:block}.price-val{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--primary)}.badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(0,229,160,0.1);color:var(--primary);margin-top:6px;margin-right:4px}.badge.warn{background:rgba(245,158,11,0.1);color:var(--accent)}.btn{padding:11px 14px;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:5px;font-family:'Inter',sans-serif;width:100%}.btn-green{background:var(--primary);color:#000}.btn-green:disabled{opacity:0.4}.btn-outline{background:none;border:1px solid var(--border);color:#E2EAF4}.btn-warn{background:rgba(245,158,11,0.1);border:1px solid var(--accent);color:var(--accent)}.item-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}.item-row:last-child{border-bottom:none}.iname{font-weight:600;font-size:13px}.isub{font-size:10px;color:var(--muted);margin-top:2px}.iprice{font-family:'Rajdhani',sans-serif;font-size:15px;color:var(--primary);font-weight:700}.ibtn{background:rgba(0,229,160,0.1);border:1px solid var(--border);color:var(--primary);width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;flex-shrink:0}.ibtn.del{background:rgba(239,68,68,0.1);color:var(--danger)}.total-bar{background:#112240;border:1px solid var(--border);border-radius:var(--radius);padding:13px 15px;margin-top:10px}.trow{display:flex;justify-content:space-between;margin-bottom:5px;font-size:12px;color:var(--muted)}.trow.main{font-size:17px;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--primary)}.trow.main span:first-child{color:#E2EAF4}.divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:10px 0}.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:200;display:none;align-items:flex-end;justify-content:center}.modal-bg.show{display:flex}.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px 20px 0 0;padding:22px 18px;width:100%;max-height:88vh;overflow-y:auto}.modal h3{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:700;margin-bottom:14px}.sinput{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:9px;color:#E2EAF4;font-size:13px;outline:none;margin-bottom:11px}.date2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}.date2 input{width:100%;padding:9px 11px;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:#E2EAF4;font-size:12px;outline:none}.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}.scard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px}.slbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px}.sval{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700}.sval.g{color:var(--primary)}.sval.r{color:var(--danger)}.sval.y{color:var(--accent)}.pedcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:13px;margin-bottom:9px}.pedhead{display:flex;justify-content:space-between}.pednome{font-weight:600;font-size:14px}.pedval{font-family:'Rajdhani',sans-serif;font-size:17px;color:var(--primary);font-weight:700}.pedmeta{display:flex;justify-content:space-between;margin-top:7px;align-items:center}.peddata{font-size:10px;color:var(--muted)}.lbadge{padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700}.lbadge.pos{background:rgba(0,229,160,0.1);color:var(--primary)}.lbadge.neg{background:rgba(239,68,68,0.1);color:var(--danger)}.toast{position:fixed;top:65px;left:50%;transform:translateX(-50%);padding:9px 18px;border-radius:8px;font-size:12px;font-weight:500;z-index:999;pointer-events:none;opacity:0;transition:opacity 0.3s;white-space:nowrap}.toast.show{opacity:1}.toast.ok{background:var(--primary);color:#000}.toast.err{background:var(--danger);color:#fff}.spin{width:18px;height:18px;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:sp 0.6s linear infinite;display:inline-block}@keyframes sp{to{transform:rotate(360deg)}}.empty{text-align:center;padding:36px 18px;color:var(--muted);font-size:13px}.stitle{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;margin-bottom:10px}.ped-acoes{display:flex;gap:6px;margin-top:8px}input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:0.4}</style></head><body><div id="login-screen"><div class="login-box"><div class="login-logo"><div class="bolt-icon">&#9889;</div><h1>CASTRO ELETRONS</h1><p>Sistema de Precificacao</p></div><div class="field"><label>USUARIO</label><input type="text" id="lu" placeholder="Seu usuario"></div><div class="field"><label>SENHA</label><input type="password" id="ls" placeholder="Sua senha"></div><button class="btn-login" id="btn-login" onclick="login()">ENTRAR NO SISTEMA</button><div id="login-erro"></div></div></div><div id="app"><div class="topbar"><div class="topbar-brand">&#9889; CASTRO ELETRONS</div><button class="btn-sair" onclick="sair()">SAIR</button></div><div class="main-content"><div class="screen active" id="sc-venda"><div style="display:flex;gap:8px;margin-bottom:14px"><button class="btn btn-green" id="tab-calc" onclick="aba('calc')" style="flex:1">CALCULADORA</button><button class="btn btn-outline" id="tab-cart" onclick="aba('cart')" style="flex:1">CARRINHO <span id="badge"></span></button></div><div id="p-calc"><div class="card"><div class="card-lbl">Dados do Produto</div><div class="ig"><label>Nome</label><input type="text" id="c-nome" placeholder="Ex: Tomada USB"></div><div class="row2"><div class="ig"><label>Custo R$</label><input type="number" id="c-custo" oninput="calc()"></div><div class="ig"><label>Frete R$</label><input type="number" id="c-frete" oninput="calc()"></div></div><div class="row2"><div class="ig"><label>Taxa %</label><input type="number" id="c-taxa" oninput="calc()"></div><div class="ig"><label>Lucro %</label><input type="number" id="c-lucro" oninput="calc()"></div></div></div><div class="price-box" id="price-box"><div style="font-size:11px;color:var(--muted);margin-bottom:3px">PRECO SUGERIDO</div><div class="price-val" id="price-val">R$ 0,00</div><span class="badge" id="b-margem">0%</span><span class="badge" id="b-custo">Custo: R$0</span></div><button class="btn btn-green" id="btn-salvar" onclick="salvar()" disabled style="margin-bottom:14px">SALVAR NO ESTOQUE</button><div class="stitle">Adicionar ao Carrinho</div><input class="sinput" placeholder="Buscar produto..." oninput="filtrarCat(this.value)"><div id="lista-cat"></div></div><div id="p-cart" style="display:none"><div class="card"><div class="ig"><label>Nome do Cliente</label><input type="text" id="c-cliente" placeholder="Ex: Joao Silva"></div><div class="ig"><label>WhatsApp do Cliente (somente numeros)</label><input type="tel" id="c-wpp" placeholder="Ex: 91999887766"></div></div><div id="cart-vazio" class="empty">Carrinho vazio</div><div id="cart-lista"></div><div id="atend-lista"></div><button class="btn btn-warn" onclick="abrirAtend()" style="margin-top:8px">+ ATENDIMENTO TECNICO</button><div id="total-bar" class="total-bar" style="display:none"><div class="trow"><span>Produtos</span><span id="t-prod">R$ 0,00</span></div><div class="trow"><span>Atendimentos</span><span id="t-atend">R$ 0,00</span></div><hr class="divider"><div class="trow main"><span>TOTAL</span><span id="t-total">R$ 0,00</span></div><button class="btn btn-green" onclick="finalizar()" id="btn-fin" style="margin-top:10px">FINALIZAR PEDIDO</button></div></div></div><div class="screen" id="sc-estoque"><input class="sinput" placeholder="Buscar no estoque..." oninput="filtrarEst(this.value)"><div id="lista-est"><div class="empty"><div class="spin"></div></div></div></div><div class="screen" id="sc-pedidos"><div id="lista-ped"><div class="empty"><div class="spin"></div></div></div></div><div class="screen" id="sc-rel"><div class="date2"><div><div style="font-size:10px;color:var(--muted);margin-bottom:3px">DE</div><input type="date" id="r-ini" onchange="loadRel()"></div><div><div style="font-size:10px;color:var(--muted);margin-bottom:3px">ATE</div><input type="date" id="r-fim" onchange="loadRel()"></div></div><div id="rel-content"><div class="empty"><div class="spin"></div></div></div></div></div><nav class="bottom-nav"><button class="nav-btn active" id="nav-venda" onclick="nav('venda')"><span>&#128176;</span>Nova Venda</button><button class="nav-btn" id="nav-estoque" onclick="nav('estoque')"><span>&#128230;</span>Estoque</button><button class="nav-btn" id="nav-pedidos" onclick="nav('pedidos')"><span>&#129534;</span>Pedidos</button><button class="nav-btn" id="nav-rel" onclick="nav('rel')"><span>&#128202;</span>Relatorios</button></nav></div><div class="modal-bg" id="m-atend" onclick="if(event.target===this)fechar('m-atend')"><div class="modal"><h3>Atendimento Tecnico</h3><div class="ig"><label>Descricao</label><input type="text" id="a-desc" placeholder="Ex: Instalacao..."></div><div class="ig"><label>Valor R$</label><input type="number" id="a-val"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px"><button class="btn btn-outline" onclick="fechar('m-atend')">CANCELAR</button><button class="btn btn-warn" onclick="addAtend()">ADICIONAR</button></div></div></div><div class="modal-bg" id="m-ped" onclick="if(event.target===this)fechar('m-ped')"><div class="modal"><div id="m-ped-body"></div><button class="btn btn-outline" onclick="fechar('m-ped')" style="margin-top:10px">FECHAR</button></div></div><div class="toast" id="toast"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
-var sb=supabase.createClient('https://unhjleupkfimqqngazpa.supabase.co','sb_publishable_1PCUdcINjEA0NVksJez-QA_ZkbdY_8W');
-function f(v){return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v||0);}
-function fd(d){if(!d)return '';return new Date(d).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'});}
-var cat=[],cart=[],atends=[],preco=0,user=null;
-async function login(){var u=document.getElementById('lu').value.trim();var s=document.getElementById('ls').value;var btn=document.getElementById('btn-login');var err=document.getElementById('login-erro');if(!u||!s){err.textContent='Preencha todos os campos';err.style.display='block';return;}btn.disabled=true;btn.textContent='...';err.style.display='none';try{var res=await sb.from('usuarios').select().eq('usuario',u).eq('senha',s).single();if(res.error||!res.data)throw new Error('Usuario ou senha incorretos');user=res.data;sessionStorage.setItem('u',JSON.stringify(res.data));startApp();}catch(e){err.textContent=e.message;err.style.display='block';btn.disabled=false;btn.textContent='ENTRAR NO SISTEMA';}}
-document.getElementById('ls').addEventListener('keydown',function(e){if(e.key==='Enter')login();});
-function sair(){user=null;sessionStorage.removeItem('u');document.getElementById('app').style.display='none';document.getElementById('login-screen').style.display='flex';}
-async function startApp(){document.getElementById('login-screen').style.display='none';document.getElementById('app').style.display='flex';await loadCat();initDatas();}
-function nav(t){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});document.querySelectorAll('.nav-btn').forEach(function(n){n.classList.remove('active');});document.getElementById('sc-'+t).classList.add('active');document.getElementById('nav-'+t).classList.add('active');if(t==='estoque')loadEst();if(t==='pedidos')loadPeds();if(t==='rel')loadRel();}
-function aba(t){var c=t==='calc';document.getElementById('p-calc').style.display=c?'block':'none';document.getElementById('p-cart').style.display=c?'none':'block';document.getElementById('tab-calc').className='btn '+(c?'btn-green':'btn-outline');document.getElementById('tab-cart').className='btn '+(!c?'btn-green':'btn-outline');if(!c)renderCart();}
-function calc(){var cu=parseFloat(document.getElementById('c-custo').value)||0;var fr=parseFloat(document.getElementById('c-frete').value)||0;var tx=(parseFloat(document.getElementById('c-taxa').value)||0)/100;var lu=(parseFloat(document.getElementById('c-lucro').value)||0)/100;var pb=document.getElementById('price-box');if(cu>0&&(tx+lu)<1){var ct=cu+fr;var p=ct/(1-tx-lu);var m=((p-ct)/p)*100;preco=p;document.getElementById('price-val').textContent=f(p);document.getElementById('b-margem').textContent=m.toFixed(1)+'% margem';document.getElementById('b-margem').className='badge'+(m<20?' warn':'');document.getElementById('b-custo').textContent='Custo: '+f(ct);pb.classList.add('show');document.getElementById('btn-salvar').disabled=false;}else{pb.classList.remove('show');document.getElementById('btn-salvar').disabled=true;preco=0;}}
-async function salvar(){var nome=document.getElementById('c-nome').value.trim();if(!nome||!preco){toast('Preencha nome e calcule o preco','err');return;}var btn=document.getElementById('btn-salvar');btn.disabled=true;btn.textContent='Salvando...';try{await sb.from('produtos').insert({nome:nome.toUpperCase(),custo:parseFloat(document.getElementById('c-custo').value)||0,frete:parseFloat(document.getElementById('c-frete').value)||0,taxa_percent:parseFloat(document.getElementById('c-taxa').value)||0,lucro_percent:parseFloat(document.getElementById('c-lucro').value)||0,preco_venda:preco});toast('Salvo!','ok');['c-nome','c-custo','c-frete','c-taxa','c-lucro'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('price-box').classList.remove('show');preco=0;await loadCat();}catch(e){toast('Erro ao salvar','err');}finally{btn.disabled=false;btn.textContent='SALVAR NO ESTOQUE';}}
-async function loadCat(){var res=await sb.from('produtos').select().order('nome');cat=res.data||[];renderCat(cat);}
-function renderCat(l){var el=document.getElementById('lista-cat');if(!l.length){el.innerHTML='<div class="empty">Nenhum produto</div>';return;}el.innerHTML=l.map(function(p){return '<div class="item-row"><div><div class="iname">'+p.nome+'</div><div class="isub">Custo:'+f(p.custo)+' | Frete:'+f(p.frete)+'</div></div><div style="display:flex;align-items:center;gap:6px"><span class="iprice">'+f(p.preco_venda)+'</span><button class="ibtn" onclick="addCart(\''+p.id+'\')">+</button></div></div>';}).join('');}
-function filtrarCat(b){renderCat(cat.filter(function(p){return p.nome.toLowerCase().includes(b.toLowerCase());}));}
-function addCart(id){var p=cat.find(function(x){return x.id===id;});if(!p)return;cart.push(Object.assign({},p,{uid:Date.now()+Math.random()}));updBadge();toast(p.nome+' adicionado','ok');}
-function remCart(uid){cart=cart.filter(function(i){return i.uid!==uid;});updBadge();renderCart();}
-function updBadge(){document.getElementById('badge').textContent=cart.length?'('+cart.length+')'':'';}
-function renderCart(){var cv=document.getElementById('cart-vazio');var cl=document.getElementById('cart-lista');var al=document.getElementById('atend-lista');var tb=document.getElementById('total-bar');if(!cart.length&&!atends.length){cv.style.display='block';cl.innerHTML='';al.innerHTML='';tb.style.display='none';return;}cv.style.display='none';cl.innerHTML=cart.length?'<div class="card"><div class="card-lbl">Produtos</div>'+cart.map(function(i){return '<div class="item-row"><div><div class="iname">'+i.nome+'</div><div class="isub">Frete: '+f(i.frete)+'</div></div><div style="display:flex;align-items:center;gap:6px"><span class="iprice">'+f(i.preco_venda)+'</span><button class="ibtn del" onclick="remCart('+i.uid+')">x</button></div></div>';}).join('')+'</div>':'';al.innerHTML=atends.length?'<div class="card"><div class="card-lbl">Atendimentos</div>'+atends.map(function(a,i){return '<div class="item-row"><div class="iname">'+a.descricao+'</div><div style="display:flex;align-items:center;gap:6px"><span style="color:var(--accent);font-weight:700">'+f(a.valor)+'</span><button class="ibtn del" onclick="remAtend('+i+')">x</button></div></div>';}).join('')+'</div>':'';var tp=cart.reduce(function(s,i){return s+i.preco_venda;},0);var ta=atends.reduce(function(s,a){return s+a.valor;},0);document.getElementById('t-prod').textContent=f(tp);document.getElementById('t-atend').textContent=f(ta);document.getElementById('t-total').textContent=f(tp+ta);tb.style.display='block';}
-function abrirAtend(){document.getElementById('a-desc').value='';document.getElementById('a-val').value='';document.getElementById('m-atend').classList.add('show');}
-function addAtend(){var d=document.getElementById('a-desc').value.trim();var v=parseFloat(document.getElementById('a-val').value)||0;if(!d||!v){toast('Preencha descricao e valor','err');return;}atends.push({descricao:d,valor:v});fechar('m-atend');renderCart();toast('Atendimento adicionado','ok');}
-function remAtend(i){atends.splice(i,1);renderCart();}
-async function finalizar(){var cli=document.getElementById('c-cliente').value.trim();var wpp=document.getElementById('c-wpp').value.trim().replace(/\D/g,'');if(!cli){toast('Informe o cliente','err');return;}if(!cart.length&&!atends.length){toast('Carrinho vazio','err');return;}var btn=document.getElementById('btn-fin');btn.disabled=true;btn.textContent='Salvando...';try{var sp=cart.reduce(function(s,i){return s+i.preco_venda;},0);var tf=cart.reduce(function(s,i){return s+i.frete;},0);var ta=atends.reduce(function(s,a){return s+a.valor;},0);var tc=cart.reduce(function(s,i){return s+i.custo+i.frete;},0)+ta;var tv=sp+ta;var lt=tv-tc;var res=await sb.from('pedidos').insert({cliente_nome:cli,cliente_wpp:wpp,subtotal_produtos:sp,total_frete:tf,total_atendimentos:ta,total_custo:tc,total_venda:tv,lucro_total:lt,status:'finalizado'}).select().single();if(res.error)throw res.error;var ped=res.data;if(cart.length)await sb.from('itens_pedido').insert(cart.map(function(i){return {pedido_id:ped.id,produto_id:i.id,produto_nome:i.nome,custo:i.custo,frete:i.frete,preco_venda:i.preco_venda,quantidade:1};}));if(atends.length)await sb.from('atendimentos').insert(atends.map(function(a){return {pedido_id:ped.id,descricao:a.descricao,valor:a.valor};}));showComp(Object.assign({},ped,{itens:cart,atends:atends,wpp:wpp}));cart=[];atends=[];document.getElementById('c-cliente').value='';document.getElementById('c-wpp').value='';updBadge();}catch(e){toast('Erro ao finalizar','err');console.error(e);}finally{btn.disabled=false;btn.textContent='FINALIZAR PEDIDO';}}
-function showComp(p){var m=p.total_venda>0?((p.lucro_total/p.total_venda)*100).toFixed(1):0;var itensTexto='';if(p.itens&&p.itens.length){p.itens.forEach(function(i){itensTexto+=i.nome+': '+f(i.preco_venda)+'\n';});}if(p.atends&&p.atends.length){itensTexto+='\nAtendimentos:\n';p.atends.forEach(function(a){itensTexto+=a.descricao+': '+f(a.valor)+'\n';});}var msgWpp='Ola '+p.cliente_nome+'! Segue o resumo do seu pedido:\n\n'+itensTexto+'\nTOTAL: '+f(p.total_venda)+'\n\nPagamento:\nPIX: 91991888312\nObrigado pela preferencia! Castro Eletrons';var h='<div style="text-align:center;margin-bottom:14px"><div style="font-size:36px">OK</div><h3 style="margin:6px 0 3px">Pedido Finalizado!</h3><div style="color:var(--muted);font-size:12px">'+p.cliente_nome+'</div></div>';if(p.itens&&p.itens.length){h+='<div class="card-lbl">PRODUTOS</div>';p.itens.forEach(function(i){h+='<div class="trow"><span>'+i.nome+'</span><span>'+f(i.preco_venda)+'</span></div>';});}if(p.atends&&p.atends.length){h+='<div class="card-lbl" style="margin-top:10px">ATENDIMENTOS</div>';p.atends.forEach(function(a){h+='<div class="trow"><span>'+a.descricao+'</span><span style="color:var(--accent)">'+f(a.valor)+'</span></div>';});}h+='<hr class="divider"><div class="trow main"><span>TOTAL</span><span>'+f(p.total_venda)+'</span></div><div class="trow" style="margin-top:5px"><span style="color:var(--muted)">Lucro</span><span style="color:'+(p.lucro_total>=0?'var(--primary)':'var(--danger)')+';font-weight:700">'+f(p.lucro_total)+' ('+m+'%)</span></div><hr class="divider"><div style="text-align:center;color:var(--muted);font-size:12px;margin-top:6px">PIX: 91991888312</div>';if(p.wpp){var url='https://wa.me/55'+p.wpp+'?text='+encodeURIComponent(msgWpp);h+='<a href="'+url+'" target="_blank" style="display:block;margin-top:12px;padding:12px;background:#25D366;color:#000;border-radius:var(--radius);text-align:center;font-weight:700;font-size:13px;text-decoration:none">ENVIAR NO WHATSAPP</a>';}document.getElementById('m-ped-body').innerHTML=h;document.getElementById('m-ped').classList.add('show');renderCart();}
-async function loadEst(){document.getElementById('lista-est').innerHTML='<div class="empty"><div class="spin"></div></div>';var res=await sb.from('produtos').select().order('nome');renderEst(res.data||[]);}
-var estAll=[];
-function renderEst(l){estAll=l;var el=document.getElementById('lista-est');if(!l.length){el.innerHTML='<div class="empty">Estoque vazio</div>';return;}el.innerHTML=l.map(function(p){var m=p.preco_venda>0?(((p.preco_venda-p.custo-p.frete)/p.preco_venda)*100).toFixed(1):0;return'<div class="card"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="iname">'+p.nome+'</div><div class="isub">Custo:'+f(p.custo)+' | Frete:'+f(p.frete)+'</div><div style="margin-top:6px"><span style="font-family:Rajdhani,sans-serif;font-size:18px;color:var(--primary);font-weight:700">'+f(p.preco_venda)+'</span> <span class="badge'+(parseFloat(m)<20?' warn':'')+'">'+m+'% margem</span></div></div><button class="ibtn del" onclick="delProd(\''+p.id+'\',\''+p.nome.replace(/'/g,"\\'")+'\')">del</button></div></div>';}).join('');}
-function filtrarEst(b){renderEst(estAll.filter(function(p){return p.nome.toLowerCase().includes(b.toLowerCase());}));}
-async function delProd(id,nome){if(!confirm('Excluir "'+nome+'"?'))return;await sb.from('produtos').delete().eq('id',id);toast('Removido','ok');loadEst();loadCat();}
-async function loadPeds(){document.getElementById('lista-ped').innerHTML='<div class="empty"><div class="spin"></div></div>';var res=await sb.from('pedidos').select().order('criado_em',{ascending:false});var l=res.data||[];var el=document.getElementById('lista-ped');if(!l.length){el.innerHTML='<div class="empty">Nenhum pedido</div>';return;}el.innerHTML=l.map(function(p){var m=p.total_venda>0?((p.lucro_total/p.total_venda)*100).toFixed(1):0;var wBtn=p.cliente_wpp?'<button onclick="reenviarWpp(\''+p.id+'\')" style="background:#25D366;border:none;color:#000;padding:4px 8px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer">WPP</button>':'';return'<div class="pedcard"><div class="pedhead"><div class="pednome">'+p.cliente_nome+'</div><div class="pedval">'+f(p.total_venda)+'</div></div><div class="pedmeta"><div class="peddata">'+fd(p.criado_em)+'</div><div class="lbadge '+(p.lucro_total>=0?'pos':'neg')+'">Lucro: '+f(p.lucro_total)+' ('+m+'%)</div></div><div class="ped-acoes">'+wBtn+'<button onclick="verPed(\''+p.id+'\')" style="background:var(--surface);border:1px solid var(--border);color:#E2EAF4;padding:4px 8px;border-radius:6px;font-size:10px;cursor:pointer">DETALHES</button><button onclick="delPed(\''+p.id+'\',\''+p.cliente_nome.replace(/'/g,"\\'")+'\' )" style="background:rgba(239,68,68,0.1);border:1px solid var(--danger);color:var(--danger);padding:4px 8px;border-radius:6px;font-size:10px;cursor:pointer">EXCLUIR</button></div></div>';}).join('');}
-async function delPed(id,nome){if(!confirm('Excluir pedido de "'+nome+'"?'))return;await sb.from('itens_pedido').delete().eq('pedido_id',id);await sb.from('atendimentos').delete().eq('pedido_id',id);await sb.from('pedidos').delete().eq('id',id);toast('Pedido excluido','ok');loadPeds();}
-async function reenviarWpp(id){var r1=await sb.from('pedidos').select().eq('id',id).single();var p=r1.data;var r2=await sb.from('itens_pedido').select().eq('pedido_id',id);var its=r2.data||[];var r3=await sb.from('atendimentos').select().eq('pedido_id',id);var ats=r3.data||[];var txt='';its.forEach(function(i){txt+=i.produto_nome+': '+f(i.preco_venda)+'\n';});if(ats.length){txt+='\nAtendimentos:\n';ats.forEach(function(a){txt+=a.descricao+': '+f(a.valor)+'\n';});}var msg='Ola '+p.cliente_nome+'! Segue o resumo do seu pedido:\n\n'+txt+'\nTOTAL: '+f(p.total_venda)+'\n\nPagamento:\nPIX: 91991888312\nObrigado pela preferencia! Castro Eletrons';window.open('https://wa.me/55'+p.cliente_wpp+'?text='+encodeURIComponent(msg),'_blank');}
-async function verPed(id){var r1=await sb.from('pedidos').select().eq('id',id).single();var p=r1.data;var r2=await sb.from('itens_pedido').select().eq('pedido_id',id);var its=r2.data||[];var r3=await sb.from('atendimentos').select().eq('pedido_id',id);var ats=r3.data||[];var m=p.total_venda>0?((p.lucro_total/p.total_venda)*100).toFixed(1):0;var h='<div style="display:flex;justify-content:space-between;margin-bottom:14px"><div><h3 style="margin:0 0 3px">'+p.cliente_nome+'</h3><div style="color:var(--muted);font-size:11px">'+fd(p.criado_em)+'</div></div><div style="font-family:Rajdhani,sans-serif;font-size:20px;color:var(--primary);font-weight:700">'+f(p.total_venda)+'</div></div>';if(its.length){h+='<div class="card-lbl">PRODUTOS</div>';its.forEach(function(i){h+='<div class="trow"><span>'+i.produto_nome+'</span><span>'+f(i.preco_venda)+'</span></div>';});}if(ats.length){h+='<div class="card-lbl" style="margin-top:10px">ATENDIMENTOS</div>';ats.forEach(function(a){h+='<div class="trow"><span>'+a.descricao+'</span><span style="color:var(--accent)">'+f(a.valor)+'</span></div>';});}h+='<hr class="divider"><div class="trow"><span style="color:var(--muted)">Custo</span><span style="color:var(--danger)">'+f(p.total_custo)+'</span></div><div class="trow main"><span>TOTAL</span><span>'+f(p.total_venda)+'</span></div><div class="trow"><span style="color:var(--muted)">LUCRO</span><span style="color:'+(p.lucro_total>=0?'var(--primary)':'var(--danger)')+';font-weight:700">'+f(p.lucro_total)+' ('+m+'%)</span></div>';document.getElementById('m-ped-body').innerHTML=h;document.getElementById('m-ped').classList.add('show');}
-function initDatas(){var h=new Date();var i=new Date(h.getFullYear(),h.getMonth(),1);document.getElementById('r-ini').value=i.toISOString().split('T')[0];document.getElementById('r-fim').value=h.toISOString().split('T')[0];}
-async function loadRel(){var ini=document.getElementById('r-ini').value;var fim=document.getElementById('r-fim').value;if(!ini||!fim)return;document.getElementById('rel-content').innerHTML='<div class="empty"><div class="spin"></div></div>';var res=await sb.from('pedidos').select().gte('criado_em',ini+'T00:00:00').lte('criado_em',fim+'T23:59:59').eq('status','finalizado').order('criado_em',{ascending:false});var ps=res.data||[];var tv=ps.reduce(function(s,p){return s+p.total_venda;},0);var tc=ps.reduce(function(s,p){return s+p.total_custo;},0);var tf=ps.reduce(function(s,p){return s+p.total_frete;},0);var ta=ps.reduce(function(s,p){return s+p.total_atendimentos;},0);var lt=ps.reduce(function(s,p){return s+p.lucro_total;},0);var mg=tv>0?((lt/tv)*100).toFixed(1):0;var h='<div class="sgrid"><div class="scard"><div class="slbl">Total Vendas</div><div class="sval g">'+f(tv)+'</div></div><div class="scard"><div class="slbl">Lucro</div><div class="sval '+(lt>=0?'g':'r')+'">'+f(lt)+'</div></div><div class="scard"><div class="slbl">Custo</div><div class="sval r">'+f(tc)+'</div></div><div class="scard"><div class="slbl">Margem</div><div class="sval y">'+mg+'%</div></div><div class="scard"><div class="slbl">Fretes</div><div class="sval">'+f(tf)+'</div></div><div class="scard"><div class="slbl">Atend.</div><div class="sval">'+f(ta)+'</div></div></div><div class="scard" style="margin-bottom:10px"><div class="slbl">Pedidos</div><div class="sval g">'+ps.length+'</div></div>';if(ps.length){h+='<div class="stitle">Detalhamento</div>';ps.forEach(function(p){var m=p.total_venda>0?((p.lucro_total/p.total_venda)*100).toFixed(1):0;h+='<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:11px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-weight:600;font-size:13px">'+p.cliente_nome+'</span><span style="color:var(--muted);font-size:10px">'+fd(p.criado_em)+'</span></div><div style="display:flex;flex-wrap:wrap;gap:4px;font-size:10px"><span style="background:rgba(0,229,160,0.1);color:var(--primary);padding:2px 6px;border-radius:4px">Venda:'+f(p.total_venda)+'</span><span style="background:rgba(239,68,68,0.1);color:var(--danger);padding:2px 6px;border-radius:4px">Custo:'+f(p.total_custo)+'</span></div><div style="margin-top:6px"><span class="lbadge '+(p.lucro_total>=0?'pos':'neg')+'">Lucro:'+f(p.lucro_total)+' ('+m+'%)</span></div></div>';});}else{h+='<div class="empty">Nenhum pedido neste periodo</div>';}document.getElementById('rel-content').innerHTML=h;}
-function fechar(id){document.getElementById(id).classList.remove('show');}
-var tt;function toast(msg,t){var el=document.getElementById('toast');el.textContent=msg;el.className='toast '+(t||'ok')+' show';clearTimeout(tt);tt=setTimeout(function(){el.classList.remove('show');},2500);}
-var ss=sessionStorage.getItem('u');if(ss){user=JSON.parse(ss);startApp();}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Castro Elétrons - Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Manti seu CSS que está excelente, apenas pequenos ajustes de contraste */
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:#070E1A;color:#E2EAF4;min-height:100vh}
+        :root{--bg:#070E1A;--surface:#0D1B2E;--primary:#00E5A0;--accent:#F59E0B;--danger:#EF4444;--muted:#5A7A9A;--border:rgba(0,229,160,0.15);--radius:12px}
+        #login-screen{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:20px}
+        .login-box{width:100%;max-width:360px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 28px}
+        .login-logo{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:32px}
+        .bolt-icon{width:56px;height:56px;background:rgba(0,229,160,0.1);border:2px solid var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px}
+        .login-logo h1{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;letter-spacing:3px}
+        .login-logo p{color:var(--muted);font-size:12px}
+        .field{margin-bottom:14px}
+        .field label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px}
+        .field input{width:100%;padding:11px 13px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:#E2EAF4;font-size:14px;outline:none}
+        .field input:focus{border-color:var(--primary)}
+        .btn-login{width:100%;padding:13px;background:var(--primary);color:#000;border:none;border-radius:var(--radius);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;cursor:pointer;margin-top:8px}
+        #app{display:none;flex-direction:column;min-height:100vh}
+        .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:11px 15px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+        .topbar-brand{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;color:var(--primary)}
+        .main-content{flex:1;padding-bottom:76px}
+        .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:flex;z-index:50}
+        .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;padding:9px 4px 11px;cursor:pointer;color:var(--muted);font-size:9px;gap:3px;background:none;border:none}
+        .nav-btn.active{color:var(--primary)}
+        .screen{display:none;padding:14px}
+        .screen.active{display:block}
+        .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px}
+        .price-box{background:linear-gradient(135deg,rgba(0,229,160,0.1),transparent);border:1px solid var(--primary);border-radius:var(--radius);padding:14px;margin:10px 0;display:none}
+        .price-box.show{display:block}
+        .price-val{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--primary)}
+        .btn{padding:11px 14px;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:5px;width:100%}
+        .btn-green{background:var(--primary);color:#000}
+        .btn-outline{background:none;border:1px solid var(--border);color:#E2EAF4}
+        .item-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .total-bar{background:#112240;border:1px solid var(--border);border-radius:var(--radius);padding:13px 15px;margin-top:10px}
+        .trow.main{font-size:17px;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--primary)}
+        .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:200;display:none;align-items:flex-end;justify-content:center}
+        .modal-bg.show{display:flex}
+        .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px 20px 0 0;padding:22px 18px;width:100%;max-height:88vh;overflow-y:auto}
+        .toast{position:fixed;top:65px;left:50%;transform:translateX(-50%);padding:9px 18px;border-radius:8px;font-size:12px;z-index:999;opacity:0;transition:0.3s}
+        .toast.show{opacity:1}
+        .toast.ok{background:var(--primary);color:#000}
+        .toast.err{background:var(--danger);color:#fff}
+    </style>
+</head>
+<body>
+
+<div id="login-screen">
+    <div class="login-box">
+        <div class="login-logo">
+            <div class="bolt-icon">⚡</div>
+            <h1>CASTRO ELÉTRONS</h1>
+            <p>Sistema de Precificação Profissional</p>
+        </div>
+        <div class="field">
+            <label>USUÁRIO</label>
+            <input type="text" id="lu" placeholder="Gabriel27">
+        </div>
+        <div class="field">
+            <label>SENHA</label>
+            <input type="password" id="ls" placeholder="********">
+        </div>
+        <button class="btn-login" id="btn-login" onclick="login()">ENTRAR NO SISTEMA</button>
+        <div id="login-erro" style="color:var(--danger); font-size:12px; margin-top:10px; text-align:center; display:none;"></div>
+    </div>
+</div>
+
+<div id="app">
+    <div class="topbar">
+        <div class="topbar-brand">⚡ CASTRO ELÉTRONS</div>
+        <button class="btn-sair" onclick="sair()" style="background:none; border:1px solid var(--border); color:var(--muted); padding:5px 10px; border-radius:8px; font-size:11px;">SAIR</button>
+    </div>
+
+    <div class="main-content">
+        <div class="screen active" id="sc-venda">
+            <div style="display:flex;gap:8px;margin-bottom:14px">
+                <button class="btn btn-green" id="tab-calc" onclick="aba('calc')" style="flex:1">CALCULADORA</button>
+                <button class="btn btn-outline" id="tab-cart" onclick="aba('cart')" style="flex:1">CARRINHO <span id="badge"></span></button>
+            </div>
+
+            <div id="p-calc">
+                <div class="card">
+                    <div class="ig"><label>Nome do Produto</label><input type="text" id="c-nome" class="sinput" style="width:100%; padding:10px; margin-bottom:10px; background:#070E1A; border:1px solid var(--border); color:#fff; border-radius:8px;"></div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <div><label style="font-size:11px; color:var(--muted)">Custo R$</label><input type="number" id="c-custo" oninput="calc()" style="width:100%; padding:10px; background:#070E1A; border:1px solid var(--border); color:#fff; border-radius:8px;"></div>
+                        <div><label style="font-size:11px; color:var(--muted)">Frete R$</label><input type="number" id="c-frete" oninput="calc()" style="width:100%; padding:10px; background:#070E1A; border:1px solid var(--border); color:#fff; border-radius:8px;"></div>
+                    </div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px;">
+                        <div><label style="font-size:11px; color:var(--muted)">Taxa %</label><input type="number" id="c-taxa" oninput="calc()" style="width:100%; padding:10px; background:#070E1A; border:1px solid var(--border); color:#fff; border-radius:8px;"></div>
+                        <div><label style="font-size:11px; color:var(--muted)">Lucro %</label><input type="number" id="c-lucro" oninput="calc()" style="width:100%; padding:10px; background:#070E1A; border:1px solid var(--border); color:#fff; border-radius:8px;"></div>
+                    </div>
+                </div>
+
+                <div class="price-box" id="price-box">
+                    <div style="font-size:11px;color:var(--muted);margin-bottom:3px">PREÇO SUGERIDO</div>
+                    <div class="price-val" id="price-val">R$ 0,00</div>
+                    <div id="b-info" style="font-size:11px; margin-top:5px; color:var(--primary)"></div>
+                </div>
+
+                <button class="btn btn-green" id="btn-salvar" onclick="salvar()" disabled style="margin-bottom:20px">SALVAR NO ESTOQUE</button>
+                
+                <div style="font-weight:bold; margin-bottom:10px; font-size:14px; letter-spacing:1px;">CATÁLOGO</div>
+                <input type="text" class="sinput" placeholder="Buscar produto..." oninput="filtrarCat(this.value)" style="width:100%; padding:12px; background:var(--surface); border:1px solid var(--border); color:#fff; border-radius:10px; margin-bottom:10px;">
+                <div id="lista-cat"></div>
+            </div>
+
+            <div id="p-cart" style="display:none">
+                <div class="card">
+                    <div class="field"><label>NOME DO CLIENTE</label><input type="text" id="c-cliente" placeholder="Ex: João Silva"></div>
+                    <div class="field"><label>WHATSAPP (DDD + NÚMERO)</label><input type="tel" id="c-wpp" placeholder="91991888312"></div>
+                </div>
+                <div id="cart-vazio" style="text-align:center; padding:40px; color:var(--muted);">Carrinho vazio</div>
+                <div id="cart-lista"></div>
+                <div id="atend-lista"></div>
+                <button class="btn btn-outline" onclick="abrirAtend()" style="margin-top:10px; border-color:var(--accent); color:var(--accent);">+ ADICIONAR SERVIÇO TÉCNICO</button>
+                
+                <div id="total-bar" class="total-bar" style="display:none">
+                    <div class="trow" style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;"><span>Produtos</span><span id="t-prod">R$ 0,00</span></div>
+                    <div class="trow" style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:10px;"><span>Serviços</span><span id="t-atend">R$ 0,00</span></div>
+                    <div class="trow main" style="display:flex; justify-content:space-between; border-top:1px solid var(--border); pt-10"><span>TOTAL</span><span id="t-total">R$ 0,00</span></div>
+                    <button class="btn btn-green" onclick="finalizar()" id="btn-fin" style="margin-top:15px; height:50px; font-size:14px;">FINALIZAR E GERAR WHATSAPP</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen" id="sc-estoque">
+            <input type="text" class="sinput" placeholder="Pesquisar no estoque..." oninput="filtrarEst(this.value)" style="width:100%; padding:12px; background:var(--surface); border:1px solid var(--border); color:#fff; border-radius:10px; margin-bottom:15px;">
+            <div id="lista-est"></div>
+        </div>
+        <div class="screen" id="sc-pedidos"><div id="lista-ped"></div></div>
+        <div class="screen" id="sc-rel"><div id="rel-content"></div></div>
+    </div>
+
+    <nav class="bottom-nav">
+        <button class="nav-btn active" id="nav-venda" onclick="nav('venda')"><span>💰</span>Venda</button>
+        <button class="nav-btn" id="nav-estoque" onclick="nav('estoque')"><span>📦</span>Estoque</button>
+        <button class="nav-btn" id="nav-pedidos" onclick="nav('pedidos')"><span>📑</span>Pedidos</button>
+        <button class="nav-btn" id="nav-rel" onclick="nav('rel')"><span>📊</span>Relatório</button>
+    </nav>
+</div>
+
+<div class="modal-bg" id="m-atend">
+    <div class="modal">
+        <h3>Atendimento Técnico</h3>
+        <input type="text" id="a-desc" placeholder="Descrição do serviço" class="sinput" style="width:100%; padding:12px; margin-bottom:10px; background:var(--bg); border:1px solid var(--border); color:#fff; border-radius:8px;">
+        <input type="number" id="a-val" placeholder="Valor R$" class="sinput" style="width:100%; padding:12px; margin-bottom:15px; background:var(--bg); border:1px solid var(--border); color:#fff; border-radius:8px;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+            <button class="btn btn-outline" onclick="fechar('m-atend')">CANCELAR</button>
+            <button class="btn btn-green" onclick="addAtend()">ADICIONAR</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// --- CONFIGURAÇÃO SUPABASE ---
+const SB_URL = 'https://unhjleupkfimqqngazpa.supabase.co';
+const SB_KEY = 'sb_publishable_1PCUdcINjEA0NVksJez-QA_ZkbdY_8W'; 
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+// --- VARIÁVEIS GLOBAIS ---
+let cat = [], cart = [], atends = [], precoSugerido = 0, user = null;
+
+// --- LOGIN ---
+async function login() {
+    const u = document.getElementById('lu').value.trim();
+    const s = document.getElementById('ls').value;
+    const btn = document.getElementById('btn-login');
+    const err = document.getElementById('login-erro');
+
+    if(!u || !s) return toast('Preencha tudo!', 'err');
+    
+    btn.disabled = true; btn.textContent = 'CARREGANDO...';
+    
+    const { data, error } = await sb.from('usuarios').select().eq('usuario', u).eq('senha', s).single();
+
+    if (error || !data) {
+        err.style.display = 'block';
+        err.textContent = 'Usuário ou senha incorretos!';
+        btn.disabled = false; btn.textContent = 'ENTRAR NO SISTEMA';
+    } else {
+        user = data;
+        localStorage.setItem('castro_user', JSON.stringify(data));
+        startApp();
+    }
+}
+
+function startApp() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    loadCat();
+}
+
+function sair() {
+    localStorage.removeItem('castro_user');
+    location.reload();
+}
+
+// --- NAVEGAÇÃO ---
+function nav(t) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(n => n.classList.remove('active'));
+    document.getElementById('sc-'+t).classList.add('active');
+    document.getElementById('nav-'+t).classList.add('active');
+    if(t === 'estoque') loadEst();
+}
+
+function aba(t) {
+    const isCalc = t === 'calc';
+    document.getElementById('p-calc').style.display = isCalc ? 'block' : 'none';
+    document.getElementById('p-cart').style.display = isCalc ? 'none' : 'block';
+    document.getElementById('tab-calc').className = 'btn ' + (isCalc ? 'btn-green' : 'btn-outline');
+    document.getElementById('tab-cart').className = 'btn ' + (!isCalc ? 'btn-green' : 'btn-outline');
+    if(!isCalc) renderCart();
+}
+
+// --- CÁLCULOS ---
+function calc() {
+    const custo = parseFloat(document.getElementById('c-custo').value) || 0;
+    const frete = parseFloat(document.getElementById('c-frete').value) || 0;
+    const taxa = (parseFloat(document.getElementById('c-taxa').value) || 0) / 100;
+    const lucro = (parseFloat(document.getElementById('c-lucro').value) || 0) / 100;
+    
+    const totalCusto = custo + frete;
+    const divisor = 1 - (taxa + lucro);
+
+    if (totalCusto > 0 && divisor > 0) {
+        precoSugerido = totalCusto / divisor;
+        document.getElementById('price-val').textContent = f(precoSugerido);
+        document.getElementById('b-info').textContent = `Custo Total: ${f(totalCusto)} | Margem Líquida Aplicada`;
+        document.getElementById('price-box').classList.add('show');
+        document.getElementById('btn-salvar').disabled = false;
+    } else {
+        document.getElementById('price-box').classList.remove('show');
+        document.getElementById('btn-salvar').disabled = true;
+    }
+}
+
+// --- BANCO DE DADOS (PRODUTOS) ---
+async function salvar() {
+    const nome = document.getElementById('c-nome').value.trim();
+    if(!nome) return toast('Dê um nome ao produto', 'err');
+
+    const btn = document.getElementById('btn-salvar');
+    btn.disabled = true; btn.textContent = 'SALVANDO...';
+
+    const { error } = await sb.from('produtos').insert({
+        nome: nome.toUpperCase(),
+        custo: parseFloat(document.getElementById('c-custo').value) || 0,
+        frete: parseFloat(document.getElementById('c-frete').value) || 0,
+        taxa_percent: parseFloat(document.getElementById('c-taxa').value) || 0,
+        lucro_percent: parseFloat(document.getElementById('c-lucro').value) || 0,
+        preco_venda: precoSugerido
+    });
+
+    if(error) {
+        toast('Erro ao salvar no banco!', 'err');
+    } else {
+        toast('Produto salvo com sucesso!', 'ok');
+        ['c-nome','c-custo','c-frete','c-taxa','c-lucro'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('price-box').classList.remove('show');
+        loadCat();
+    }
+    btn.disabled = false; btn.textContent = 'SALVAR NO ESTOQUE';
+}
+
+async function loadCat() {
+    const { data } = await sb.from('produtos').select().order('nome');
+    cat = data || [];
+    renderCatList(cat);
+}
+
+function renderCatList(lista) {
+    const div = document.getElementById('lista-cat');
+    div.innerHTML = lista.map(p => `
+        <div class="item-row">
+            <div>
+                <div style="font-weight:600; font-size:13px">${p.nome}</div>
+                <div style="font-size:10px; color:var(--muted)">Venda: ${f(p.preco_venda)}</div>
+            </div>
+            <button class="btn btn-green" onclick="addCart('${p.id}')" style="width:40px; height:30px; padding:0">+</button>
+        </div>
+    `).join('');
+}
+
+function filtrarCat(val) {
+    const filtrados = cat.filter(p => p.nome.toLowerCase().includes(val.toLowerCase()));
+    renderCatList(filtrados);
+}
+
+// --- CARRINHO ---
+function addCart(id) {
+    const p = cat.find(x => x.id === id);
+    cart.push({...p, tempId: Date.now()});
+    updBadge();
+    toast('Adicionado!', 'ok');
+}
+
+function updBadge() {
+    document.getElementById('badge').textContent = cart.length > 0 ? `(${cart.length})` : '';
+}
+
+function renderCart() {
+    const listaDiv = document.getElementById('cart-lista');
+    const atendDiv = document.getElementById('atend-lista');
+    
+    if(cart.length === 0 && atends.length === 0) {
+        document.getElementById('cart-vazio').style.display = 'block';
+        document.getElementById('total-bar').style.display = 'none';
+        listaDiv.innerHTML = ''; atendDiv.innerHTML = '';
+        return;
+    }
+
+    document.getElementById('cart-vazio').style.display = 'none';
+    document.getElementById('total-bar').style.display = 'block';
+
+    listaDiv.innerHTML = cart.map(i => `
+        <div class="item-row">
+            <span>${i.nome}</span>
+            <div style="display:flex; align-items:center; gap:10px">
+                <span style="color:var(--primary); font-weight:bold">${f(i.preco_venda)}</span>
+                <button onclick="remCart(${i.tempId})" style="background:none; border:none; color:var(--danger)">✕</button>
+            </div>
+        </div>
+    `).join('');
+
+    atendDiv.innerHTML = atends.map((a, idx) => `
+        <div class="item-row" style="border-left: 2px solid var(--accent); padding-left:10px">
+            <span>🔧 ${a.descricao}</span>
+            <div style="display:flex; align-items:center; gap:10px">
+                <span style="color:var(--accent)">${f(a.valor)}</span>
+                <button onclick="remAtend(${idx})" style="background:none; border:none; color:var(--danger)">✕</button>
+            </div>
+        </div>
+    `).join('');
+
+    const totalProd = cart.reduce((s, i) => s + i.preco_venda, 0);
+    const totalAtend = atends.reduce((s, a) => s + a.valor, 0);
+    
+    document.getElementById('t-prod').textContent = f(totalProd);
+    document.getElementById('t-atend').textContent = f(totalAtend);
+    document.getElementById('t-total').textContent = f(totalProd + totalAtend);
+}
+
+function remCart(tid) { cart = cart.filter(i => i.tempId !== tid); renderCart(); updBadge(); }
+function remAtend(idx) { atends.splice(idx, 1); renderCart(); }
+
+function abrirAtend() { document.getElementById('m-atend').classList.add('show'); }
+function fechar(id) { document.getElementById(id).classList.remove('show'); }
+
+function addAtend() {
+    const d = document.getElementById('a-desc').value;
+    const v = parseFloat(document.getElementById('a-val').value);
+    if(d && v) {
+        atends.push({descricao: d, valor: v});
+        fechar('m-atend');
+        renderCart();
+        document.getElementById('a-desc').value = '';
+        document.getElementById('a-val').value = '';
+    }
+}
+
+// --- FINALIZAÇÃO E WHATSAPP ---
+async function finalizar() {
+    const cliente = document.getElementById('c-cliente').value.trim();
+    const wpp = document.getElementById('c-wpp').value.trim().replace(/\D/g,'');
+    
+    if(!cliente) return toast('Nome do cliente obrigatório!', 'err');
+    
+    const total = cart.reduce((s, i) => s + i.preco_venda, 0) + atends.reduce((s, a) => s + a.valor, 0);
+    
+    // Texto do WhatsApp com o "Discurso Chave"
+    let itensTexto = cart.map(i => `✅ *${i.nome}* - ${f(i.preco_venda)}`).join('\n');
+    if(atends.length > 0) {
+        itensTexto += '\n\n*SERVIÇOS TÉCNICOS:*\n' + atends.map(a => `🔧 ${a.descricao} - ${f(a.valor)}`).join('\n');
+    }
+
+    const msg = `🚀 *PEDIDO FINALIZADO - CASTRO ELÉTRONS* 🚀\n\nOlá, *${cliente}*! É um prazer ver você equipar sua rotina com o melhor da tecnologia. Muito obrigado pela confiança!\n\n*RESUMO DO PEDIDO:*\n${itensTexto}\n\n💰 *TOTAL: ${f(total)}*\n\n--- \n💳 *PAGAMENTO:*\n• *PIX:* 91991888312 (Gabriel Castro)\n• *Espécie: em mãos*\n\n⚡ *DICA:* Guarde essa mensagem! Clientes fiéis da *Castro Elétrons* têm prioridade absoluta em novos estoques e descontos no próximo upgrade. \n\nQual a melhor forma de pagamento para você agora?`;
+
+    // Salvar no Banco
+    const { data: ped, error } = await sb.from('pedidos').insert({
+        cliente_nome: cliente,
+        cliente_wpp: wpp,
+        total_venda: total,
+        status: 'finalizado'
+    }).select().single();
+
+    if(!error) {
+        window.open(`https://wa.me/55${wpp}?text=${encodeURIComponent(msg)}`, '_blank');
+        toast('Pedido concluído!', 'ok');
+        cart = []; atends = [];
+        document.getElementById('c-cliente').value = '';
+        document.getElementById('c-wpp').value = '';
+        aba('calc');
+    } else {
+        toast('Erro ao salvar pedido!', 'err');
+    }
+}
+
+// --- AUXILIARES ---
+function f(v) { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v); }
+
+function toast(m, t) {
+    const el = document.getElementById('toast');
+    el.textContent = m;
+    el.className = `toast ${t} show`;
+    setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// Checar sessão ao abrir
+const savedUser = localStorage.getItem('castro_user');
+if(savedUser) {
+    user = JSON.parse(savedUser);
+    startApp();
+}
+</script>
+
+</body>
+</html>
